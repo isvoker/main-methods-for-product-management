@@ -1,11 +1,7 @@
-// dependencies: libs.d/data-loader.js
-const ProductAttribute = function () {
-	'use strict';
-
 	/**
 	 * Получение данных из схемы атрибутов.
 	 */
-	const AttributeSchema = function() {
+	export const AttributeSchema = function() {
 		const controller = 'products.d';
 
 		function loadSchema(typeId) {
@@ -84,7 +80,7 @@ const ProductAttribute = function () {
 	/**
 	 * Загрузка и рендеринг значений для полей ввода атрибутов.
 	 */
-	const AttributeInput = function () {
+	export const AttributeInput = function () {
 		const controller = 'products.d';
 
 		let onInitComplete = null;
@@ -268,7 +264,7 @@ const ProductAttribute = function () {
 	 * @param {string} value
 	 * @return {string}
 	 */
-	function getLabelForBooleanValue(value) {
+	export const getLabelForBooleanValue = (value) => {
 		const PREDEFINED_VALUES = {
 			'15': 'Питание',
 			'17': 'Проживание',
@@ -287,7 +283,7 @@ const ProductAttribute = function () {
 	 * @param {(string|int)} typeId
 	 * @param {function} [onSuccess]
 	 */
-	function renderInputs(typeId, onSuccess) {
+	export const renderInputs = (typeId, onSuccess) => {
 		AttributeInput.onInit(onSuccess);
 
 		document.querySelectorAll('.js__fill-attribute-values:not(.js__fill-attribute-completed)')
@@ -296,10 +292,3 @@ const ProductAttribute = function () {
 				input.classList.add('js__fill-attribute-completed');
 			});
 	}
-
-	return {
-		loadDescription: AttributeSchema.loadDescription,
-		getLabelForBooleanValue: getLabelForBooleanValue,
-		renderInputs: renderInputs
-	};
-}();
